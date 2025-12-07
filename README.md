@@ -2,6 +2,7 @@
 
 # Install Git & Zen Browser 
 
+```
 function WebInstall {
     param(
         [string]$Url,
@@ -17,6 +18,7 @@ function WebInstall {
 
 WebInstall "https://github.com/git-for-windows/git/releases/latest/download/Git-64-bit.exe" "/VERYSILENT /NORESTART"
 WebInstall "https://github.com/zen-browser/desktop/releases/latest/download/zen.installer.exe" "/S"
+```
 
 # Links
     Windows SDK: https://go.microsoft.com/fwlink/?linkid=2342616
@@ -25,6 +27,7 @@ WebInstall "https://github.com/zen-browser/desktop/releases/latest/download/zen.
     
 # Add LLVM to PATH
 
+```
 $Path = "C:\Program Files\LLVM\bin"
 
 if (-not (Test-Path $Path)) {
@@ -42,15 +45,18 @@ if ($OldPath -split ';' -contains $Path) {
 $NewPath = $OldPath + ";" + $Path
 [Environment]::SetEnvironmentVariable("PATH", $NewPath, "User")
 Write-Host "LLVM ADDED TO PATH"
+```
 
-* This last part is not recommended, unsafe, and could damage your Windows installation.
-* If you decide to run this, do it at your own risk.
-* Don't run this if you don't know what you are doing!
-* Disable Windows Defender before continuing.
 # Defender Remover
+## This last part is not recommended, unsafe, and could damage your Windows installation.
+## If you decide to run this, do it at your own risk.
+## Don't run this if you don't know what you are doing!
+## Disable Windows Defender before continuing.
 
+```
 $Path = "$env:TEMP\defender-remover"
 git clone https://github.com/ionuttbara/windows-defender-remover.git $Path
 cd $Path
 
 ./Script_Run.bat
+```
