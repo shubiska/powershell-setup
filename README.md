@@ -3,21 +3,20 @@
 # Install Git & Zen Browser 
 
 ```
-function WebInstall {
-    param(
-        [string]$Url,
-        [string]$SilentArgs
-    )
+$gitUrl = "https://github.com/git-for-windows/git/releases/latest/download/Git-64-bit.exe"
+$gitInstaller = "$env:TEMP\git_installer.exe"
 
-    $Installer = "$env:TEMP\installer.exe"
+Invoke-WebRequest -Uri $gitUrl -OutFile $gitInstaller
+Start-Process $gitInstaller -ArgumentList "/VERYSILENT /NORESTART" -Wait
+Remove-Item $gitInstaller
 
-    Invoke-WebRequest -Uri $Url -OutFile $Installer
-    Start-Process $Installer -ArgumentList $SilentArgs -Wait
-    Remove-Item $Installer
-}
+# === Install Zen Browser ===
+$zenUrl = "https://github.com/zen-browser/desktop/releases/latest/download/zen.installer.exe"
+$zenInstaller = "$env:TEMP\zen_installer.exe"
 
-WebInstall "https://github.com/git-for-windows/git/releases/latest/download/Git-64-bit.exe" "/VERYSILENT /NORESTART"
-WebInstall "https://github.com/zen-browser/desktop/releases/latest/download/zen.installer.exe" "/S"
+Invoke-WebRequest -Uri $zenUrl -OutFile $zenInstaller
+Start-Process $zenInstaller -ArgumentList "/S" -Wait
+Remove-Item $zenInstaller
 ```
 
 # Links
