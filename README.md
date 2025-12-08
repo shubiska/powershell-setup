@@ -1,25 +1,8 @@
 # Shubiska Powershell Setup
 
-# Install Git & Zen Browser 
-
-```
-$gitUrl = "https://github.com/git-for-windows/git/releases/latest/download/Git-64-bit.exe"
-$gitInstaller = "$env:TEMP\git_installer.exe"
-
-Invoke-WebRequest -Uri $gitUrl -OutFile $gitInstaller
-Start-Process $gitInstaller -ArgumentList "/VERYSILENT /NORESTART" -Wait
-Remove-Item $gitInstaller
-
-# === Install Zen Browser ===
-$zenUrl = "https://github.com/zen-browser/desktop/releases/latest/download/zen.installer.exe"
-$zenInstaller = "$env:TEMP\zen_installer.exe"
-
-Invoke-WebRequest -Uri $zenUrl -OutFile $zenInstaller
-Start-Process $zenInstaller -ArgumentList "/S" -Wait
-Remove-Item $zenInstaller
-```
-
 # Links
+    Zen: https://github.com/zen-browser/desktop/releases/
+    https://github.com/git-for-windows/git/releases/
     Windows SDK: https://go.microsoft.com/fwlink/?linkid=2342616
     VSCodium: https://github.com/VSCodium/vscodium/releases
     LLVM: https://github.com/llvm/llvm-project/releases
